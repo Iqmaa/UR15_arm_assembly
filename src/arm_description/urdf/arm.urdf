@@ -1,0 +1,121 @@
+<!-- slightly different from when i learnt xacro files -->
+<!-- no collision, inertial, ill try adding the material name after -->
+
+<robot name="armie">
+
+    <!-- base (base_link is apparently the standard, would have to change name in rviz if i chnage this)-->
+    <link name="base_link">
+        <visual>
+            <origin xyz= "0 0 0" rpy = "0 0 0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/base.dae" scale="1.0 1.0 1.0"/> 
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="base_to_shoulder" type="continuous">
+        <origin xyz="0.0 0.0 0.21" rpy="0.0 0.0 0.0"/> <!--forward left/right up/down-->
+        <parent link="base_link"/>
+        <child link="shoulder"/>
+        <axis xyz="0.0 0.0 1.0"/> 
+    </joint>
+
+    <!-- shoulder -->
+    <link name="shoulder">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://arm_description/meshes/shoulder.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="shoulder_to_upperarm" type="continuous">
+        <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="shoulder"/>
+        <child link="upperarm"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <!-- upperarm -->
+    <link name="upperarm">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/upperarm.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="upperarm_to_forearm" type="continuous">
+        <origin xyz="0.0 0.03 0.644" rpy="0.0 0.0 0.0" />
+        <parent link="upperarm"/>
+        <child link="forearm"/> 
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <!-- forearm -->
+    <link name="forearm">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/forearm.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="forearm_to_wrist1" type="continuous">
+        <origin xyz="0.0 0.006 0.517" rpy="0.0 0.0 0.0"/>
+        <parent link="forearm"/>
+        <child link="wrist1"/>        
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint> 
+
+    <!-- wrist1 -->
+    <link name="wrist1">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/wrist1.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="wrist1_to_wrist2" type="continuous">
+        <origin xyz="0.0 0.05 0.067" rpy="0.0 0.0 0.0"/>
+        <parent link="wrist1"/>
+        <child link="wrist2"/>
+        <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+
+    <!-- wrist2 -->
+    <link name="wrist2">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/wrist2.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="wrist2_to_wrist3" type="continuous">
+        <origin xyz="0.0 0.0654 0.064" rpy="0.0 0.0 0.0"/>
+        <parent link="wrist2"/>
+        <child link="wrist3"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <!-- wrist3 -->
+    <link name="wrist3">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://arm_description/meshes/wrist3.dae" scale="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- kept getting a cmake list error so i had to edit that -->
+    <!-- mixed up links and joints somwehow 😭 -->
+    <!-- don't think it has any limits?  got errors when i didn't specify limits for revolute so i used continuous instead-->
+</robot>
