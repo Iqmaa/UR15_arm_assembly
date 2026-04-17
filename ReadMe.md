@@ -1,6 +1,6 @@
 # UR15 Robotics Arm
 
-The aim of this project was to assemble the pats of the ur15 robot arm and visualise them in rviz which was done by creating a urdf file for the arm and setting the positions and motion type.
+The aim of this project was to assemble the parts of the ur15 robot arm and visualise them in rviz which was done by creating a urdf file for the arm and setting the positions and motion type.
 
 <img width="1392" alt="image" src="/UR15_1.png" />
 
