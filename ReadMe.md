@@ -29,7 +29,7 @@ Run the following commands line by line
 ```xml
 colcon build --symlink-install
 source install/setup.bash
-ros2 launch urdf_tutorial display.launch.py model:=/home/iqma/Projects/Aurora_Arm_workshop/Task4_Iqma/src/arm_description/urdf/arm.urdf
+ros2 launch urdf_tutorial display.launch.py model:=/input/path/to/urdf/src/arm_description/urdf/arm.urdf
 
 ```
 ## Expected Outcome
