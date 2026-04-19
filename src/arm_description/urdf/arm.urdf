@@ -1,5 +1,5 @@
 <!-- slightly different from when i learnt xacro files -->
-<!-- no collision, inertial, ill try adding the material name after -->
+<!-- no collision and inertial because rviz only cares about visual, inertial and collision are the physics stuff gazebo cares about-->
 
 <robot name="armie">
 
